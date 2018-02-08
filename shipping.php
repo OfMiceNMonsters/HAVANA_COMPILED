@@ -88,7 +88,7 @@
 
 					<!--input and label for name expiry-->
 					<label>Expiry Date:</label>
-					<input type="text" name="expiry" placeholder="12-2022" required>
+					<input type="text" name="expiry" placeholder="Enter mmyyyy (e.g. 122022)" required>
 					<!--<label></label>
 					<input type="text" name="year" placeholder="Enter Year (yy)" required>-->
 
