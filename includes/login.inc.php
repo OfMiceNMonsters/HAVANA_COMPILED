@@ -36,9 +36,9 @@ if (isset($_POST['submit'])) {
 				//De-hashing the password
 				$key = 'SecretKeySecretKeySecret'; 
 				$encryptedpwd=$pwd;
-				$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB);
+				$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_192, MCRYPT_MODE_ECB);
 				$iv = mt_rand(0,99999);
-				$decryptedtext = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, $encryptedpwd, MCRYPT_MODE_ECB, $iv);
+				$decryptedtext = mcrypt_decrypt(MCRYPT_RIJNDAEL_192, $key, $encryptedpwd, MCRYPT_MODE_ECB, $iv);
 				if ($decryptedtext == false) {
 					echo 'Please try again, invalid username or password. <a href="<a href=index.php">Return to Homepage </a> ';
 					exit();
