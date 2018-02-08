@@ -122,11 +122,11 @@ if (isset($_POST['submit'])) {
 						
 						$key = 'SecretKeySecretKeySecret'; //i made it 24 bits instead.
 						$encryptedpwd=$password;
-						$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB);
+						$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_192, MCRYPT_MODE_ECB);
 						//create IV with random numbers
 						$iv = 8888;
 						//get iv size
-						$encryptedtext = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $key, $encryptedpwd, MCRYPT_MODE_ECB, $iv);
+						$encryptedtext = mcrypt_encrypt(MCRYPT_RIJNDAEL_192, $key, $encryptedpwd, MCRYPT_MODE_ECB, $iv);
 						
 						$secretKey="6Le6ukAUAAAAANWzrVAdzQrKBRGpZHntHeXK_qXf";
 						$responseKey=$_POST['g-recaptcha-response'];
