@@ -20,16 +20,16 @@
 	// link to database
 	$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 	
-	//post the inputs and add the htmlspecialchars & strip tags for xss prevention
-	$name = htmlspecialchars(strip_tags($_POST['name']));
-	$address = htmlspecialchars(strip_tags($_POST['address']));
-	$postcode = htmlspecialchars(strip_tags($_POST['postcode']));
-	$mobile = htmlspecialchars(strip_tags($_POST['mobile']));
-	$delivery = htmlspecialchars(strip_tags($_POST['delivery']));
-	$card_no = htmlspecialchars(strip_tags($_POST['card_no']));
-	$card_name = htmlspecialchars(strip_tags($_POST['card_name']));
-	$expiry = htmlspecialchars(strip_tags($_POST['expiry']));
-	$ccv = htmlspecialchars(strip_tags($_POST['ccv']));
+	//post the inputs and add the htmlspecialchars & strip tag function for xss prevention
+	$name = htmlspecialchars(strip_tag($_POST['name']));
+	$address = htmlspecialchars(strip_tag($_POST['address']));
+	$postcode = htmlspecialchars(strip_tag($_POST['postcode']));
+	$mobile = htmlspecialchars(strip_tag($_POST['mobile']));
+	$delivery = htmlspecialchars(strip_tag($_POST['delivery']));
+	$card_no = htmlspecialchars(strip_tag($_POST['card_no']));
+	$card_name = htmlspecialchars(strip_tag($_POST['card_name']));
+	$expiry = htmlspecialchars(strip_tag($_POST['expiry']));
+	$ccv = htmlspecialchars(strip_tag($_POST['ccv']));
 
 	// error handlers
 	// name input can only have letters
@@ -114,10 +114,10 @@
 												$hashedcard = $card_no;
 												$key = 'SecretKeySecretK';
 												
-												$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB);
+												$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_ECB);
 												//create IV with random numbers
 												$iv = 88888;
-												$encryptedtext = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $key, $hashedcard, MCRYPT_MODE_ECB, $iv);
+												$encryptedtext = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key, $hashedcard, MCRYPT_MODE_ECB, $iv);
 
 												//encrypted hex text
 												// echo "Encrypted text: ".bin2hex($encryptedtext)."<br>";
@@ -141,6 +141,23 @@
 																 
 												// execute the statement.
 												$query->execute();
+												
+												//get variables to start its session upon insert
+												if(isset($_SESSION['user_id']) && isset($$_SESSION["cart"]))
+												{
+													$_SESSION['name'] = $name;
+													$_SESSION['address'] = $address;
+													$_SESSION['postcode'] = $postcode;
+													$_SESSION['mobile']= $mobile;
+													$_SESSION['delivery'] = $delivery;
+													$_SESSION['card_no'] = $card_no;
+													$_SESSION['card_name'] = $card_name;
+													$_SESSION['expiry']= $expiry;
+													$_SESSION['ccv']= $ccv;
+												}else{
+													header("Location: index.php");
+												}
+
 																	
 												// if everything is ok, link to summary page
 												header("Location: ../summary.php");
