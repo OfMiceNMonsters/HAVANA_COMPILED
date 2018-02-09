@@ -47,52 +47,8 @@ $connect = mysqli_connect("localhost", "root", "", "havana");
         echo $token;
       }
     ?>
-<!--            </section>
-    <section class="container" style="background-color: white; ">
-    <div style="clear:both"></div>
-    <h2>My Shopping Bag</h2>
-    <div class="table-responsive">
-    <table align="relative" border="0">
-    <tr>
-    <th>Product Name</th>
-    <th>Quantity</th>
-    <th>Price Details</th>
-    <th>Order Total</th>
-    <th>Action</th>
-    </tr>
-    <?php
-    /*
-    if(!empty($_SESSION["cart"]))
-    {
-        $total = 0;
-        foreach($_SESSION["cart"] as $keys => $values)
-        {
-            ?>
-            <tr>
-            <td><?php echo $values["name"]; ?></td>
-            <td><?php echo $values["item_quantity"] ?></td>
-            <td>$ <?php echo $values["product_price"]; ?></td>
-            <td>$ <?php echo number_format($values["item_quantity"] * $values["product_price"], 2); ?></td>
-            <td><a href="shop.php?action=delete&id=<?php echo $values["product_id"]; ?>"><span class="text-danger">Delete</span></a></td>
-            </tr>
-            <?php 
-            $total = $total + ($values["item_quantity"] * $values["product_price"]);
-        }
-        ?>
-        <tr>
-        <td colspan="3" align="right">Total</td>
-        <td align="right">$ <?php echo number_format($total, 2); ?></td>
-        <td><a href="shipping.php"><b>CHECKOUT</b></td>
-        </tr>
-        <?php
-    }
-*/
-    ?>
-    </table>
-    </div>
-    </div>
-</div>
-</section>-->
+    </section>
+    
  </body>
 
 <?php

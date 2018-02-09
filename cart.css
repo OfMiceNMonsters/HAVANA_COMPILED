@@ -1,0 +1,93 @@
+/*-- alison's--*/
+/*this is standard layout of havana*/
+body {
+	width: 100%;
+	margin: auto;
+	background:#FAFAFA;
+	background: url(https://i.pinimg.com/originals/46/bb/2a/46bb2a02d21ea8ef34d81ec03c344e5d.jpg) fixed;font-family: "Lato", sans-serif;
+}
+
+
+.container {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.content {
+
+  width:1000px;
+  height:1300px;
+
+}
+
+/*white background*/
+#example1 {
+    position: relative;
+    width: 1000px;
+    height: 1000px;
+    background: #FFFFFF;
+
+}
+
+
+.text {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+
+/*table config*/
+#table {
+    font-family: arial, sans-serif;
+    width: 100%; 
+    border-collapse: separate;
+    margin-top: 1px;
+    padding: 20px;
+    border: 1px solid ;
+    text-align: center;
+}
+
+.td {
+    border: 1px solid #dddddd;
+    padding: 50px;
+    text-align: center;
+}
+
+.th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 50px;
+}
+
+/*cart items*/
+.cartitems {
+    margin: auto;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+
+}
+
+
+
+}
+/*contact or references grey area at bottom of page*/
+.footer {
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: grey;
+    color: white;
+    font-size:15px;
+    text-align: center;
+}
+
+#tab {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+}
