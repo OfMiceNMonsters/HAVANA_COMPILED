@@ -7,17 +7,17 @@ function strip_tag($string) {
 
 	// strip html & php tags
 	$string = strip_tags($string);
-	// strip control characters
-	return preg_replace('/[[:punct:]]/', ' ', $string);
 
+	// strip control characters
+	return $string;
 }
 
 
 if (isset($_POST['submit'])) {
 	
 
-	$uid = $_POST['uid'];
-	$pwd = $_POST['pwd'];
+	$uid = strip_tag($_POST['uid']);
+	$pwd = strip_tag($_POST['pwd']);
 
 	//Error handlers
 	//Check if inputs are empty
@@ -34,20 +34,18 @@ if (isset($_POST['submit'])) {
 		} else {
 			if ($row = mysqli_fetch_assoc($result)) {
 				//De-hashing the password
-				$key = 'SecretKeySecretKeySecret'; 
-				$encryptedpwd=$pwd;
-				$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_192, MCRYPT_MODE_ECB);
-				$iv = mt_rand(0,99999);
-				$decryptedtext = mcrypt_decrypt(MCRYPT_RIJNDAEL_192, $key, $encryptedpwd, MCRYPT_MODE_ECB, $iv);
-				if ($decryptedtext == false) {
-					echo 'Please try again, invalid username or password. <a href="<a href=index.php">Return to Homepage </a> ';
+				$hashedPwdCheck = password_verify($pwd, $row['user_password']);
+				if ($hashedPwdCheck == false) {
+					echo 'Please try again, invalid username or password. <a href="/index.php">Return to Homepage </a> ';
 					exit();
-				} elseif ($decryptedtext == true) {
+				} elseif ($hashedPwdCheck == true) {
 					//Log in the user here
 					$_SESSION['user_id'] = $row['user_id'];
 					$_SESSION['user_email'] = $row['user_email'];
 					$_SESSION['user_uid'] = $row['username'];
 					$_SESSION['role']= $row['role'];
+
+
 
 					/*if($_POST['token'] == $_SESSION['token']){
 					  $age_token = time() - $_SESSION['token_time'];
@@ -67,11 +65,14 @@ if (isset($_POST['submit'])) {
 					        //if it is not an admin, it would be a normal user
 					        //redirect to member page
 					        header("Location: ../index.php");
+
+					      
 					    }
 
 					  } 
 					
 /*
+
 					}
 					}
 
