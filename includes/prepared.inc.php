@@ -129,19 +129,6 @@
 												$statement->bind_param("ssiisssis", $name, $address, $postcode, $mobile, $delivery, $encryptedtext, $card_name, $expiry, $hashed);
 												$statement->execute(); 
 
-												// once input inserted into database, drop rows inside the cart 
-												// instantiate our PDO object and create a new MySQL connection.
-												$pdo = new PDO('mysql:host=localhost;dbname=havana', 'root', '');
-																	
-												// SQL statement to delete all rows in cart4
-												$sql = "TRUNCATE TABLE `cart`";
-																		 
-												// prepare the SQL query.
-												$query = $pdo->prepare($sql);
-																 
-												// execute the statement.
-												$query->execute();
-												
 												//get variables to start its session upon insert
 												if(isset($_SESSION['user_id']) && isset($$_SESSION["cart"]))
 												{
